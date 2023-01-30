@@ -1,11 +1,33 @@
+<?php
+
+if(isset($_POST['submit'])){
+
+  include_once('db_submit.php');
+  
+      $nome = $_POST['nome'];
+      $email = $_POST['email'];
+      $telefone = $_POST['telefone'];
+  
+      $result = mysqli_query($conexao, "INSERT INTO formu (nome, email, whatsapp) VALUES ('$nome', '$email', '$telefone')");
+  }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/nvidia_ico.ico" type="image/x-icon">
+    <title>Sorteio RTX 4090 TI | Gallardo</title>
+
     <link rel="stylesheet" href="style.css">
-    <title>Landing Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+
 </head>
 <body>
     <header>
@@ -13,9 +35,9 @@
             <a href="#" class="logo">NVidia</a>
             <ul class="nav-menu">
 
-                <li class="nav-item"><a href="#" class="nav-link">Sorteio</a></li>
+                <li class="nav-item"><a href="#form-container" class="nav-link">Sorteio</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Outros Produtos</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Contato</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contato</a></li>
         
             </ul>
             <div class="burguer">
@@ -63,7 +85,7 @@
                 Clique agora em “Quero Participar” para concorrer à RTX 4090 TI GALLARDO.</h3>
 
               <div class="bt">
-                <h1><a href="#">Quero Participar</a></h1>
+                <h1><a href="#form-container">Quero Participar</a></h1>
               </div>
               
               
@@ -72,13 +94,35 @@
                 </h1>
 
 
-                <!-- Formulário -->
+                
 
-                <!-- Fim do Formulário -->
+                
     </main>
 
+    <!-- parte do Eduardo -->
+    <!-- Formulário -->
+    <section class="form-container" id="form-container">
+
+        <form action="index.php" method="post">
+          <h1>FORMULÁRIO PARA O SORTEIO</h1>
+
+          <label for="name">Nome:</label>
+          <input type="text" id="name" name="nome" class="input-field" required>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" class="input-field" required>
+
+          <label for="whatsapp">WhatsApp:</label>
+          <input type="text" id="whatsapp" name="telefone" class="input-field" required>
+  
+          <input class="green-button" type="submit" name="submit">
+        </form>
+
+    </section>
+    <!-- Fim do Formulário -->
+
     <footer>
-        <div class="contact">
+        <div class="contact" id="contact">
             <p>Contatos</p>
             <p>Email: nvidiasorteio@gmail.com</p>
             <p>Phone: 555-555-5555</p>
@@ -92,8 +136,6 @@
           <p>Developed by Matheus and Eduardo</p>
     </footer>
 
-
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
